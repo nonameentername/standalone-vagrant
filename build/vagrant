@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export ROOTDIR=$(dirname $(readlink -f $0))
+
+if [ "ssh" = "$1" ]; then
+    ssh -i $ROOTDIR/keys/vagrant -p 2222 vagrant@localhost
+else
+    java -jar $ROOTDIR/standalone-vagrant-1.0-SNAPSHOT.jar $@
+fi
